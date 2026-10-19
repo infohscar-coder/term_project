@@ -15,4 +15,3 @@ python-dotenv
 requests
 pydantic
 google-generativeai
-streamlit run frontend/app.py
