@@ -1,0 +1,18 @@
+fastapi
+uvicorn
+streamlit
+torch
+torchvision
+ultralytics
+scikit-learn
+pandas
+numpy
+matplotlib
+langchain
+langchain-google-genai
+chromadb
+python-dotenv
+requests
+pydantic
+google-generativeai
+streamlit run frontend/app.py
