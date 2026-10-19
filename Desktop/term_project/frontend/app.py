@@ -2,6 +2,9 @@ import streamlit as st
 import requests
 import pandas as pd
 
+# Define your live Render backend URL here (or keep it clean using an environment/fallback pattern)
+BACKEND_URL = "https://term-project-xxxx.onrender.com"  # Replace with your actual Render URL
+
 st.set_page_config(page_title="AI & Data Analysis Integrated Web Service", layout="wide")
 st.title("🤖 AI & Data Analysis Integrated Web Service")
 
@@ -25,7 +28,7 @@ if module == "1. Gemini Auto-Reply Webhook":
     if st.button("Generate Auto-Reply"):
         if user_comment:
             try:
-                res = requests.post("http://localhost:8000/api/gemini/reply", json={"comment": user_comment})
+                res = requests.post(f"{BACKEND_URL}/api/gemini/reply", json={"comment": user_comment})
                 if res.status_code == 200:
                     st.success("AI Reply Generated:")
                     st.write(res.json().get("reply"))
@@ -44,7 +47,7 @@ elif module == "2. Titanic ML Benchmark & EDA":
     if st.button("Run Benchmark & Evaluate Models"):
         with st.spinner("Training models and calculating metrics..."):
             try:
-                res = requests.get("http://localhost:8000/api/titanic/benchmark")
+                res = requests.get(f"{BACKEND_URL}/api/titanic/benchmark")
                 if res.status_code == 200:
                     metrics_df = pd.DataFrame(res.json())
                     st.success("Benchmark Completed Successfully!")
