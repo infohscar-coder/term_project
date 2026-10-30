@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 import pandas as pd
 
-# Define your live Render backend URL here (or keep it clean using an environment/fallback pattern)
-BACKEND_URL = "https://term-project-xxxx.onrender.com"  # Replace with your actual Render URL
+
+BACKEND_URL = "https://term-project-hwm8.onrender.com"
 
 st.set_page_config(page_title="AI & Data Analysis Integrated Web Service", layout="wide")
 st.title("🤖 AI & Data Analysis Integrated Web Service")
