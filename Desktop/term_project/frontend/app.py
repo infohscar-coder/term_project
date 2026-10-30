@@ -63,10 +63,23 @@ elif module == "2. Titanic ML Benchmark & EDA":
 elif module == "3. ResNet-18 Image Classification":
     st.header("🖼️ ResNet-18 Image Classification (Cat vs. Dog)")
     uploaded_file = st.file_uploader("Upload an image (Cat or Dog)...", type=["jpg", "jpeg", "png"])
+    
     if uploaded_file is not None:
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
         if st.button("Classify Image"):
-            st.info("Classification feature ready to process via backend PyTorch model.")
+            with st.spinner("Classifying image via backend PyTorch model..."):
+                try:
+                    # Send image file to Render backend
+                    files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
+                    response = requests.post(f"{BACKEND_URL}/api/classify", files=files)
+                    
+                    if response.status_code == 200:
+                        result = response.json()
+                        st.success(f"Prediction Result: {result}")
+                    else:
+                        st.error("Failed to classify image from backend.")
+                except Exception as e:
+                    st.error(f"Error connecting to backend: {e}")
 
 # --- Module 4: YOLOv8 Object Detection ---
 elif module == "4. YOLOv8 Object Detection":
@@ -75,12 +88,41 @@ elif module == "4. YOLOv8 Object Detection":
     if yolo_file is not None:
         st.image(yolo_file, caption="Uploaded Image for Detection", use_column_width=True)
         if st.button("Run Object Detection"):
-            st.info("YOLOv8 Nano inference ready.")
+            with st.spinner("Running YOLOv8 inference on backend..."):
+                try:
+                    files = {"file": (yolo_file.name, yolo_file.getvalue(), yolo_file.type)}
+                    response = requests.post(f"{BACKEND_URL}/api/yolo", files=files)
+                    
+                    if response.status_code == 200:
+                        # Assuming your backend returns an annotated image or JSON
+                        st.success("Object detection completed successfully!")
+                        st.json(response.json()) # Or st.image() if your backend returns an image bytes
+                    else:
+                        st.error("Failed to run object detection from backend.")
+                except Exception as e:
+                    st.error(f"Error connecting to backend: {e}")
 
 # --- Module 5: RAG Document Q&A ---
 elif module == "5. RAG Document Q&A":
     st.header("📚 RAG Document Q&A")
     doc_file = st.file_uploader("Upload reference document (TXT/PDF)...", type=["txt", "pdf"])
     question = st.text_input("Ask a question about the document:")
+    
     if st.button("Get AI Answer"):
-        st.info("Vector search and Gemini generation ready.")
+        if doc_file is not None and question:
+            with st.spinner("Processing vector search and Gemini generation..."):
+                try:
+                    files = {"file": (doc_file.name, doc_file.getvalue(), doc_file.type)}
+                    data = {"question": question}
+                    response = requests.post(f"{BACKEND_URL}/api/rag", files=files, data=data)
+                    
+                    if response.status_code == 200:
+                        result = response.json()
+                        st.success("AI Answer:")
+                        st.write(result.get("answer", result))
+                    else:
+                        st.error("Failed to get answer from backend.")
+                except Exception as e:
+                    st.error(f"Error connecting to backend: {e}")
+        else:
+            st.warning("Please upload a document and enter a question.")
