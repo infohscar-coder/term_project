@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">H&S Car | Terms & Conditions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --bg-dark: #0a0a0a; 
+            --sidebar-bg: #121212; 
+            --card-bg: #161616;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-color); 
+            display: flex; 
+            min-height: 100vh; 
+            line-height: 1.8;
+        }
+        
+        /* SIDEBAR STYLES */
+        .sidebar { 
+            width: 280px; 
+            background: var(--sidebar-bg); 
+            border-right: 1px solid #222; 
+            padding-top: 50px; 
+            flex-shrink: 0;
+        }
+
+        .nav-item { 
+            display: block; 
+            padding: 20px 30px; 
+            color: #888; 
+            text-decoration: none; 
+            border-bottom: 1px solid #1a1a1a; 
+            transition: 0.3s ease; 
+        }
+
+        .nav-item:hover, .nav-item.active { 
+            border-left: 4px solid var(--gold); 
+            color: var(--gold); 
+            background: #1a1a1a; 
+        }
+        
+        /* MAIN CONTENT AREA */
+        .content { 
+            flex: 1; 
+            padding: 60px 80px; 
+            position: relative;
+            max-width: 1000px;
+        }
+
+        /* HEADER TOP & LANG SELECTOR */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .lang-select {
+            background: var(--sidebar-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            margin-bottom: 10px; 
+            font-size: 2.5rem;
+        }
+
+        h2 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; 
+            color: #fff;
+            margin: 40px 0 15px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 8px;
+        }
+
+        .date { 
+            color: var(--gold); 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 40px; 
+        }
+
+        p { color: #b0b0b0; margin-bottom: 20px; }
+
+        .back-btn { 
+            display: inline-block; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* Gold Button */
+        .cta-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #d4af37, #aa882c);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="imprint.html" class="nav-item" data-i18n="nav_legal">Legal Notice</a>
+        <a href="terms.html" class="nav-item" data-i18n="nav_terms">Terms and Conditions</a>
+        <a href="privacy.html" class="nav-item" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="help.html" class="nav-item" data-i18n="nav_help">Help Center</a>
+        <a href="cookies.html" class="nav-item" data-i18n="nav_cookies">Cookie Policy</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="header-top">
+            <a href="index.html" class="back-btn" data-i18n="back_btn">← Back to Index</a>
+            
+            <!-- Language Selector -->
+            <div class="lang-select-wrapper">
+                <select id="languageSelect" class="lang-select">
+                    <option value="de">DE - Deutsch</option>
+                    <option value="en">GB - English</option>
+                    <option value="ru">RU - Русский</option>
+                    <option value="tr">TR - Türkçe</option>
+                    <option value="pl">PL - Polski</option>
+                    <option value="fr">FR - Français</option>
+                    <option value="it">IT - Italiano</option>
+                    <option value="nl">NL - Nederlands</option>
+                </select>
+            </div>
+        </div>
+
+        <p class="date" data-i18n="date">Stand: 17. Juni 2026</p>
+        <h1 data-i18n="mainTitle">Nutzungsbedingungen</h1>
+        
+        <p data-i18n="intro">Willkommen bei H&S Car. Diese Bedingungen bilden den exklusiven Rahmen für unsere erstklassige Fahrzeugvermittlung.</p>
+
+        <h2 data-i18n="h2Sec1">1. Unsere Rolle als Vermittler</h2>
+        <p data-i18n="pSec1">H&S Car agiert als technischer Intermediär. Wir sind stolz darauf, eine Plattform zu bieten, die den anspruchsvollen Handel von Fahrzeugen unterstützt, sind jedoch zu keinem Zeitpunkt Vertragspartei.</p>
+
+        <h2 data-i18n="h2Sec2">2. Qualitätsstandards</h2>
+        <p data-i18n="pSec2">Wir verlangen von unseren Nutzern höchste Transparenz. Jedes Inserat spiegelt die Seriosität unseres Netzwerks wider. Fehlerhafte oder irreführende Angaben werden von unserem Qualitätsteam unverzüglich korrigiert.</p>
+
+        <h2 data-i18n="h2Sec3">3. Haftungsausschluss</h2>
+        <p data-i18n="pSec3">Die Nutzung unserer digitalen Infrastruktur erfolgt „wie besehen“. Wir garantieren eine performante Umgebung, übernehmen jedoch keine Haftung für die Beschaffenheit der angebotenen Fahrzeuge.</p>
+
+        <a href="index.html" class="cta-btn" data-i18n="cta">Zurück zum H&S Portal</a>
+    </main>
+
+    <script>
+        // 1. DİL VERİ SETİ (8 Dil)
+        const translations = {
+            de: {
+                nav_legal: "Impressum",
+                nav_terms: "AGB",
+                nav_privacy: "Datenschutz",
+                nav_help: "Hilfe-Center",
+                nav_cookies: "Cookie-Richtlinie",
+                back_btn: "← Zurück zur Startseite",
+                title: "Nutzungsbedingungen | H&S Car",
+                date: "Stand: 17. Juni 2026",
+                mainTitle: "Nutzungsbedingungen",
+                intro: "Willkommen bei H&S Car. Diese Bedingungen bilden den exklusiven Rahmen für unsere erstklassige Fahrzeugvermittlung.",
+                h2Sec1: "1. Unsere Rolle als Vermittler",
+                pSec1: "H&S Car agiert als technischer Intermediär. Wir sind stolz darauf, eine Plattform zu bieten, die den anspruchsvollen Handel von Fahrzeugen unterstützt, sind jedoch zu keinem Zeitpunkt Vertragspartei.",
+                h2Sec2: "2. Qualitätsstandards",
+                pSec2: "Wir verlangen von unseren Nutzern höchste Transparenz. Jedes Inserat spiegelt die Seriosität unseres Netzwerks wider. Fehlerhafte oder irreführende Angaben werden von unserem Qualitätsteam unverzüglich korrigiert.",
+                h2Sec3: "3. Haftungsausschluss",
+                pSec3: "Die Nutzung unserer digitalen Infrastruktur erfolgt „wie besehen“. Wir garantieren eine performante Umgebung, übernehmen jedoch keine Haftung für die Beschaffenheit der angebotenen Fahrzeuge.",
+                cta: "Zurück zum H&S Portal"
+            },
+            en: {
+                nav_legal: "Legal Notice",
+                nav_terms: "Terms and Conditions",
+                nav_privacy: "Privacy Policy",
+                nav_help: "Help Center",
+                nav_cookies: "Cookie Policy",
+                back_btn: "← Back to Index",
+                title: "Terms of Service | H&S Car",
+                date: "As of: June 17, 2026",
+                mainTitle: "Terms of Service",
+                intro: "Welcome to H&S Car. These terms form the exclusive framework for our premium vehicle brokerage.",
+                h2Sec1: "1. Our Role as an Intermediary",
+                pSec1: "H&S Car acts as a technical intermediary. We are proud to offer a platform that supports the sophisticated trading of vehicles, but we are at no point a party to the contract.",
+                h2Sec2: "2. Quality Standards",
+                pSec2: "We demand the highest level of transparency from our users. Every listing reflects the integrity of our network. Incorrect or misleading information will be corrected immediately by our quality team.",
+                h2Sec3: "3. Disclaimer",
+                pSec3: "The use of our digital infrastructure is provided 'as is'. We guarantee a high-performance environment, but accept no liability for the condition of the vehicles offered.",
+                cta: "Back to H&S Portal"
+            },
+            tr: {
+                nav_legal: "Yasal Bildirim",
+                nav_terms: "Şartlar ve Koşullar",
+                nav_privacy: "Gizlilik Politikası",
+                nav_help: "Yardım Merkezi",
+                nav_cookies: "Çerez Politikası",
+                back_btn: "← Ana Sayfaya Dön",
+                title: "Kullanım Koşulları | H&S Car",
+                date: "Güncelleme: 17 Haziran 2026",
+                mainTitle: "Kullanım Koşulları",
+                intro: "H&S Car'a hoş geldiniz. Bu koşullar, birinci sınıf araç aracılık hizmetimiz için özel çerçeveyi oluşturur.",
+                h2Sec1: "1. Aracı Olarak Rolümüz",
+                pSec1: "H&S Car, teknik bir aracı olarak faaliyet gösterir. Araçların nitelikli ticaretini destekleyen bir platform sunmaktan gurur duyuyoruz, ancak hiçbir aşamada sözleşmenin bir tarafı değiliz.",
+                h2Sec2: "2. Kalite Standartları",
+                pSec2: "Kullanıcılarımızdan en üst düzeyde şeffaflık talep ediyoruz. Her ilan, ağımızın güvenilirliğini yansıtır. Hatalı veya yanıltıcı bilgiler, kalite ekibimiz tarafından derhal düzeltilir.",
+                h2Sec3: "3. Sorumluluk Reddi",
+                pSec3: "Dijital altyapımızın kullanımı 'olduğu gibi' sunulmaktadır. Yüksek performanslı bir ortam garanti ediyoruz, ancak sunulan araçların durumu için hiçbir sorumluluk kabul etmiyoruz.",
+                cta: "H&S Portala Geri Dön"
+            },
+            ru: {
+                nav_legal: "Правовая информация",
+                nav_terms: "Условия использования",
+                nav_privacy: "Политика конфиденциальности",
+                nav_help: "Справочный центр",
+                nav_cookies: "Политика cookie",
+                back_btn: "← На главную",
+                title: "Условия использования | H&S Car",
+                date: "Обновлено: 17 июня 2026",
+                mainTitle: "Условия использования",
+                intro: "Добро пожаловать в H&S Car. Настоящие условия определяют основу использования нашего премиального сервиса посредничества при покупке и продаже автомобилей.",
+                h2Sec1: "1. Наша роль как посредника",
+                pSec1: "H&S Car выступает исключительно в качестве технического посредника. Мы предоставляем платформу для профессиональной торговли автомобилями, однако ни на одном этапе не являемся стороной договора.",
+                h2Sec2: "2. Стандарты качества",
+                pSec2: "Мы ожидаем от наших пользователей максимальной прозрачности. Каждое объявление отражает надежность нашей сети. Любая неверная или вводящая в заблуждение информация незамедлительно исправляется нашей командой контроля качества.",
+                h2Sec3: "3. Отказ от ответственности",
+                pSec3: "Наша цифровая инфраструктура предоставляется по принципу «как есть». Мы гарантируем высокую производительность платформы, однако не несем ответственности за состояние предлагаемых автомобилей.",
+                cta: "Вернуться на портал H&S"
+            },
+            pl: {
+                nav_legal: "Nota prawna",
+                nav_terms: "Warunki użytkowania",
+                nav_privacy: "Polityka prywatności",
+                nav_help: "Centrum pomocy",
+                nav_cookies: "Polityka cookies",
+                back_btn: "← Powrót do strony głównej",
+                title: "Warunki korzystania | H&S Car",
+                date: "Aktualizacja: 17 czerwca 2026",
+                mainTitle: "Warunki korzystania",
+                intro: "Witamy w H&S Car. Niniejsze warunki określają zasady korzystania z naszej usługi pośrednictwa w obrocie pojazdami klasy premium.",
+                h2Sec1: "1. Nasza rola jako pośrednika",
+                pSec1: "H&S Car działa wyłącznie jako pośrednik techniczny. Z dumą udostępniamy platformę wspierającą profesjonalny handel pojazdami, jednak na żadnym etapie nie jesteśmy stroną umowy.",
+                h2Sec2: "2. Standardy jakości",
+                pSec2: "Oczekujemy od naszych użytkowników najwyższego poziomu przejrzystości. Każde ogłoszenie odzwierciedla wiarygodność naszej sieci. Błędne lub wprowadzające w błąd informacje są niezwłocznie korygowane przez nasz zespół ds. jakości.",
+                h2Sec3: "3. Wyłączenie odpowiedzialności",
+                pSec3: "Nasza infrastruktura cyfrowa jest udostępniana w stanie „tak jak jest”. Gwarantujemy wysoką wydajność platformy, jednak nie ponosimy odpowiedzialności za stan oferowanych pojazdów.",
+                cta: "Powrót do portalu H&S"
+            },
+            fr: {
+                nav_legal: "Mentions légales",
+                nav_terms: "Conditions générales",
+                nav_privacy: "Politique de confidentialité",
+                nav_help: "Centre d'aide",
+                nav_cookies: "Gestion des cookies",
+                back_btn: "← Retour à l'accueil",
+                title: "Conditions d'utilisation | H&S Car",
+                date: "Mise à jour : 17 juin 2026",
+                mainTitle: "Conditions d'utilisation",
+                intro: "Bienvenue chez H&S Car. Les présentes conditions définissent le cadre de notre service premium d'intermédiation automobile.",
+                h2Sec1: "1. Notre rôle d'intermédiaire",
+                pSec1: "H&S Car agit uniquement en tant qu'intermédiaire technique. Nous fournissons une plateforme dédiée au commerce professionnel de véhicules, mais nous ne sommes à aucun moment partie au contrat.",
+                h2Sec2: "2. Normes de qualité",
+                pSec2: "Nous exigeons le plus haut niveau de transparence de la part de nos utilisateurs. Chaque annonce reflète la fiabilité de notre réseau. Toute information erronée ou trompeuse est immédiatement corrigée par notre équipe qualité.",
+                h2Sec3: "3. Exclusion de responsabilité",
+                pSec3: "Notre infrastructure numérique est fournie « en l'état ». Nous garantissons une plateforme performante, mais nous n'assumons aucune responsabilité concernant l'état des véhicules proposés.",
+                cta: "Retour au portail H&S"
+            },
+            it: {
+                nav_legal: "Note legali",
+                nav_terms: "Termini e condizioni",
+                nav_privacy: "Informativa sulla privacy",
+                nav_help: "Centro assistenza",
+                nav_cookies: "Politica sui cookie",
+                back_btn: "← Torna alla pagina iniziale",
+                title: "Termini di utilizzo | H&S Car",
+                date: "Aggiornato il: 17 giugno 2026",
+                mainTitle: "Termini di utilizzo",
+                intro: "Benvenuto su H&S Car. I presenti termini definiscono il quadro del nostro servizio premium di intermediazione automobilistica.",
+                h2Sec1: "1. Il nostro ruolo di intermediario",
+                pSec1: "H&S Car opera esclusivamente come intermediario tecnico. Offriamo una piattaforma dedicata al commercio professionale di veicoli, ma non siamo parte del contratto in alcuna fase.",
+                h2Sec2: "2. Standard di qualità",
+                pSec2: "Richiediamo ai nostri utenti il massimo livello di trasparenza. Ogni annuncio riflette l'affidabilità della nostra rete. Informazioni errate o fuorvianti vengono corrette tempestivamente dal nostro team qualità.",
+                h2Sec3: "3. Esclusione di responsabilità",
+                pSec3: "La nostra infrastruttura digitale viene fornita «così com'è». Garantiamo una piattaforma ad alte prestazioni, ma non ci assumiamo alcuna responsabilità per le condizioni dei veicoli offerti.",
+                cta: "Torna al portale H&S"
+            },
+            nl: {
+                nav_legal: "Juridische kennisgeving",
+                nav_terms: "Algemene voorwaarden",
+                nav_privacy: "Privacybeleid",
+                nav_help: "Helpcentrum",
+                nav_cookies: "Cookiebeleid",
+                back_btn: "← Terug naar de homepage",
+                title: "Gebruiksvoorwaarden | H&S Car",
+                date: "Bijgewerkt: 17 juni 2026",
+                mainTitle: "Gebruiksvoorwaarden",
+                intro: "Welkom bij H&S Car. Deze voorwaarden vormen het kader voor onze premium bemiddelingsdienst voor voertuigen.",
+                h2Sec1: "1. Onze rol als tussenpersoon",
+                pSec1: "H&S Car fungeert uitsluitend als technische tussenpersoon. Wij bieden een platform dat professionele voertuighandel ondersteunt, maar zijn op geen enkel moment partij bij de overeenkomst.",
+                h2Sec2: "2. Kwaliteitsnormen",
+                pSec2: "Wij verwachten van onze gebruikers de hoogste mate van transparantie. Elke advertentie weerspiegelt de betrouwbaarheid van ons netwerk. Onjuiste of misleidende informatie wordt onmiddellijk gecorrigeerd door ons kwaliteitsteam.",
+                h2Sec3: "3. Disclaimer",
+                pSec3: "Onze digitale infrastructuur wordt aangeboden 'zoals deze is'. Wij garanderen een platform met hoge prestaties, maar aanvaarden geen verantwoordelijkheid voor de staat van de aangeboden voertuigen.",
+                cta: "Terug naar het H&S-portaal"
+            }
+        };
+
+        // 2. DİL DEĞİŞTİRME FONKSİYONU
+        function setLanguage(lang) {
+            // 'gb' gelirse 'en' olarak eşleme yapıyoruz
+            if (lang === 'gb') lang = 'en';
+            if (!translations[lang]) lang = 'de'; 
+
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            if (translations[lang].title) {
+                document.title = translations[lang].title;
+            }
+
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('languageSelect').value = lang === 'en' ? 'en' : lang;
+        }
+
+        // 3. SAYFA YÜKLENME AYARLARI
+        document.addEventListener('DOMContentLoaded', () => {
+            // Aktif sidebar linkini seçme
+            const currentFile = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-item').forEach(link => {
+                if (link.getAttribute('href') === currentFile) link.classList.add('active');
+            });
+
+            // Hafızadaki dili yükleme
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            setLanguage(savedLang);
+
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

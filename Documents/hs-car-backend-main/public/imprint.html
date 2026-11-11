@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Car | Legal Notice / Impressum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --bg-dark: #0a0a0a; 
+            --sidebar-bg: #121212; 
+            --card-bg: #161616;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-color); 
+            display: flex; 
+            min-height: 100vh; 
+        }
+        
+        /* SIDEBAR STYLES */
+        .sidebar { 
+            width: 280px; 
+            background: var(--sidebar-bg); 
+            border-right: 1px solid #222; 
+            padding-top: 50px; 
+            flex-shrink: 0;
+        }
+
+        .nav-item { 
+            display: block; 
+            padding: 20px 30px; 
+            color: #888; 
+            text-decoration: none; 
+            border-bottom: 1px solid #1a1a1a; 
+            transition: 0.3s ease; 
+        }
+
+        .nav-item:hover, .nav-item.active { 
+            border-left: 4px solid var(--gold); 
+            color: var(--gold); 
+            background: #1a1a1a; 
+        }
+        
+        /* MAIN CONTENT AREA */
+        .content { 
+            flex: 1; 
+            padding: 60px 80px; 
+            position: relative;
+            max-width: 1000px;
+        }
+
+        /* LANGUAGE SELECTOR IN HEADER */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .lang-select-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-select {
+            background: var(--sidebar-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            margin-bottom: 30px; 
+            font-size: 2.2rem;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* LEGAL CONTENT STYLING */
+        .legal-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            line-height: 1.7;
+        }
+
+        .legal-section h2 {
+            color: var(--gold);
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .legal-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .legal-section p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .legal-section a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .legal-section a:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #2a2a2a;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="imprint.html" class="nav-item" data-i18n="nav_legal">Legal Notice</a>
+        <a href="terms.html" class="nav-item" data-i18n="nav_terms">Terms and Conditions</a>
+        <a href="privacy.html" class="nav-item" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="help.html" class="nav-item" data-i18n="nav_help">Help Center</a>
+        <a href="cookies.html" class="nav-item" data-i18n="nav_cookies">Cookie Policy</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="header-top">
+            <a href="index.html" class="back-btn" data-i18n="back_btn">← Back to Index</a>
+            
+            <!-- Language Selector (Görseldeki Sıralama) -->
+            <div class="lang-select-wrapper">
+                <select id="languageSelect" class="lang-select">
+                    <option value="de">DE - Deutsch</option>
+                    <option value="en">GB - English</option>
+                    <option value="ru">RU - Русский</option>
+                    <option value="tr">TR - Türkçe</option>
+                    <option value="pl">PL - Polski</option>
+                    <option value="fr">FR - Français</option>
+                    <option value="it">IT - Italiano</option>
+                    <option value="nl">NL - Nederlands</option>
+                </select>
+            </div>
+        </div>
+
+        <h1 data-i18n="title">Legal Notice / Impressum</h1>
+
+        <div class="legal-section" id="legalContent">
+            <!-- Dinamik Metin JavaScript Tarafından Yüklenecek -->
+        </div>
+    </main>
+
+    <script>
+        // 1. DİL VERİ SETİ (i18n Translations)
+        const translations = {
+            de: {
+                nav_legal: "Impressum",
+                nav_terms: "AGB",
+                nav_privacy: "Datenschutz",
+                nav_help: "Hilfe-Center",
+                nav_cookies: "Cookie-Richtlinie",
+                back_btn: "← Zurück zur Startseite",
+                title: "Impressum",
+                html: `
+                    <p>Angaben gemäß § 5 TMG (Telemediengesetz)</p>
+                    <h2>Anbieter / Betreiber der Website</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Deutschland]</p>
+
+                    <h2>Vertreten durch</h2>
+                    <p>[Vorname Nachname] (Inhaber / Geschäftsführer)</p>
+
+                    <h2>Kontakt</h2>
+                    <p>Telefon: +49 (0) 123 456789<br>E-Mail: info@hs-car.de</p>
+
+                    <h2>Umsatzsteuer-ID</h2>
+                    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br><strong>DE123456789</strong></p>
+
+                    <h2>Aufsichtsbehörde</h2>
+                    <p>[Gewerbeamt Berlin]</p>
+
+                    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+                    <p>[Vorname Nachname]<br>[Musterstraße 123, 10115 Berlin]</p>
+                    <hr>
+                    <h2>EU-Streitschlichtung</h2>
+                    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                    <h2>Verbraucherstreitbeilegung</h2>
+                    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                `
+            },
+            en: {
+                nav_legal: "Legal Notice",
+                nav_terms: "Terms and Conditions",
+                nav_privacy: "Privacy Policy",
+                nav_help: "Help Center",
+                nav_cookies: "Cookie Policy",
+                back_btn: "← Back to Index",
+                title: "Legal Notice",
+                html: `
+                    <p>Information according to § 5 TMG (German Telemedia Act)</p>
+                    <h2>Website Operator / Provider</h2>
+                    <p><strong>H&S Car</strong><br>[Sample Street 123]<br>[10115 Berlin, Germany]</p>
+
+                    <h2>Represented by</h2>
+                    <p>[First Name Last Name] (Owner / Managing Director)</p>
+
+                    <h2>Contact</h2>
+                    <p>Phone: +49 (0) 123 456789<br>Email: info@hs-car.de</p>
+
+                    <h2>VAT Identification Number</h2>
+                    <p>VAT ID according to § 27 a German VAT Act:<br><strong>DE123456789</strong></p>
+
+                    <h2>Supervisory Authority</h2>
+                    <p>[Trade Office Berlin]</p>
+
+                    <h2>Responsible for Content (§ 18 Abs. 2 MStV)</h2>
+                    <p>[First Name Last Name]<br>[Sample Street 123, 10115 Berlin]</p>
+                    <hr>
+                    <h2>EU Dispute Resolution</h2>
+                    <p>The European Commission provides a platform for online dispute resolution (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                    <h2>Consumer Dispute Resolution</h2>
+                    <p>We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+                `
+            },
+            ru: {
+                nav_legal: "Правовая информация",
+                nav_terms: "Условия использования",
+                nav_privacy: "Политика конфиденциальности",
+                nav_help: "Справочный центр",
+                nav_cookies: "Политика cookie",
+                back_btn: "← На главную",
+                title: "Правовая информация (Impressum)",
+                html: `
+                    <p>Информация в соответствии с § 5 TMG</p>
+                    <h2>Оператор / Владелец сайта</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Германия]</p>
+
+                    <h2>В лице</h2>
+                    <p>[Имя Фамилия] (Владелец / Генеральный директор)</p>
+
+                    <h2>Контакты</h2>
+                    <p>Телефон: +49 (0) 123 456789<br>E-Mail: info@hs-car.de</p>
+
+                    <h2>Налоговый номер (VAT ID)</h2>
+                    <p>Идентификационный номер НДС в соответствии с § 27 a Gesetz:<br><strong>DE123456789</strong></p>
+
+                    <hr>
+                    <h2>Разрешение споров в ЕС</h2>
+                    <p>Европейская комиссия предоставляет платформу для онлайн-урегулирования споров (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            },
+            tr: {
+                nav_legal: "Yasal Bildirim",
+                nav_terms: "Şartlar ve Koşullar",
+                nav_privacy: "Gizlilik Politikası",
+                nav_help: "Yardım Merkezi",
+                nav_cookies: "Çerez Politikası",
+                back_btn: "← Ana Sayfaya Dön",
+                title: "Yasal Bildirim (Künye)",
+                html: `
+                    <p>Alman Telekomünikasyon Yasası (§ 5 TMG) uyarınca bilgilendirme</p>
+                    <h2>Web Sitesi Sağlayıcısı / İşletmeci</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Almanya]</p>
+
+                    <h2>Temsil Eden</h2>
+                    <p>[Ad Soyad] (Şirket Sahibi / Genel Müdür)</p>
+
+                    <h2>İletişim</h2>
+                    <p>Telefon: +49 (0) 123 456789<br>E-Posta: info@hs-car.de</p>
+
+                    <h2>KDV Kimlik Numarası (USt-ID)</h2>
+                    <p>Alman KDV Kanunu § 27 a uyarınca KDV Kimlik No:<br><strong>DE123456789</strong></p>
+
+                    <h2>Yetkili Denetim Makamı</h2>
+                    <p>[Ticaret Dairesi Berlin / Gewerbeamt]</p>
+
+                    <hr>
+                    <h2>AB Uyuşmazlık Çözümü</h2>
+                    <p>Avrupa Komisyonu çevrimiçi uyuşmazlık çözümü (OS) için bir platform sağlar: <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            },
+            pl: {
+                nav_legal: "Nota prawna",
+                nav_terms: "Warunki użytkowania",
+                nav_privacy: "Polityka prywatności",
+                nav_help: "Centrum pomocy",
+                nav_cookies: "Polityka cookies",
+                back_btn: "← Powrót do strony głównej",
+                title: "Nota prawna (Impressum)",
+                html: `
+                    <p>Informacje zgodnie z § 5 TMG</p>
+                    <h2>Operator / Właściciel witryny</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Niemcy]</p>
+
+                    <h2>Reprezentowany przez</h2>
+                    <p>[Imię Nazwisko] (Właściciel / Dyrektor)</p>
+
+                    <h2>Kontakt</h2>
+                    <p>Telefon: +49 (0) 123 456789<br>E-mail: info@hs-car.de</p>
+
+                    <h2>NIP europejski (VAT ID)</h2>
+                    <p>Numer identyfikacyjny VAT gemäß § 27 a UStG:<br><strong>DE123456789</strong></p>
+
+                    <hr>
+                    <h2>Rozstrzyganie sporów w UE</h2>
+                    <p>Komisja Europejska udostępnia platformę internetowego rozstrzygania sporów (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            },
+            fr: {
+                nav_legal: "Mentions légales",
+                nav_terms: "Conditions générales",
+                nav_privacy: "Politique de confidentialité",
+                nav_help: "Centre d'aide",
+                nav_cookies: "Gestion des cookies",
+                back_btn: "← Retour à l'accueil",
+                title: "Mentions légales",
+                html: `
+                    <p>Informations conformes à l'article 5 de la TMG allemande</p>
+                    <h2>Exploitant du site / Éditeur</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Allemagne]</p>
+
+                    <h2>Représenté par</h2>
+                    <p>[Prénom Nom] (Propriétaire / Directeur)</p>
+
+                    <h2>Contact</h2>
+                    <p>Téléphone: +49 (0) 123 456789<br>E-mail: info@hs-car.de</p>
+
+                    <h2>Numéro de TVA intracommunautaire</h2>
+                    <p>Numéro d'identification TVA selon § 27 a UStG:<br><strong>DE123456789</strong></p>
+
+                    <hr>
+                    <h2>Règlement des litiges de l'UE</h2>
+                    <p>La Commission européenne fournit une plateforme de règlement des litiges en ligne (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            },
+            it: {
+                nav_legal: "Note legali",
+                nav_terms: "Termini e condizioni",
+                nav_privacy: "Informativa sulla privacy",
+                nav_help: "Centro assistenza",
+                nav_cookies: "Politica sui cookie",
+                back_btn: "← Torna alla pagina iniziale",
+                title: "Note legali (Impressum)",
+                html: `
+                    <p>Informazioni ai sensi del § 5 TMG</p>
+                    <h2>Gestore del sito web</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Germania]</p>
+
+                    <h2>Rappresentato da</h2>
+                    <p>[Nome Cognome] (Titolare / Amministratore)</p>
+
+                    <h2>Contatto</h2>
+                    <p>Telefono: +49 (0) 123 456789<br>E-mail: info@hs-car.de</p>
+
+                    <h2>Partita IVA (VAT ID)</h2>
+                    <p>Numero di identificazione IVA gemäß § 27 a UStG:<br><strong>DE123456789</strong></p>
+
+                    <hr>
+                    <h2>Risoluzione delle controversie UE</h2>
+                    <p>La Commissione europea fornisce una piattaforma per la risoluzione delle controversie online (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            },
+            nl: {
+                nav_legal: "Juridische kennisgeving",
+                nav_terms: "Algemene voorwaarden",
+                nav_privacy: "Privacybeleid",
+                nav_help: "Helpcentrum",
+                nav_cookies: "Cookiebeleid",
+                back_btn: "← Terug naar de homepage",
+                title: "Juridische kennisgeving (Impressum)",
+                html: `
+                    <p>Informatie volgens § 5 TMG</p>
+                    <h2>Exploitant van de website</h2>
+                    <p><strong>H&S Car</strong><br>[Musterstraße 123]<br>[10115 Berlin, Duitsland]</p>
+
+                    <h2>Vertegenwoordigd door</h2>
+                    <p>[Voornaam Achternaam] (Eigenaar / Directeur)</p>
+
+                    <h2>Contact</h2>
+                    <p>Telefoon: +49 (0) 123 456789<br>E-mail: info@hs-car.de</p>
+
+                    <h2>Btw-identificatienummer</h2>
+                    <p>Btw-id volgens § 27 a UStG:<br><strong>DE123456789</strong></p>
+
+                    <hr>
+                    <h2>EU-geschillenbeslechting</h2>
+                    <p>De Europese Commissie biedt een platform voor online geschillenbeslechting (OS): <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.</p>
+                `
+            }
+        };
+
+        // 2. DİL DEĞİŞTİRME FONKSİYONU
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'de'; // Varsayılan Almanca
+
+            // Sayfa dil özniteliğini güncelle
+            document.documentElement.lang = lang;
+
+            // Navigasyon ve Başlıkları Güncelle
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // HTML İçeriğini Güncelle
+            document.getElementById('legalContent').innerHTML = translations[lang].html;
+
+            // Tercihi Hafızaya Kaydet (LocalStorage)
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('languageSelect').value = lang;
+        }
+
+        // 3. SAYFA YÜKLENDİĞİNDE ÇALIŞACAK KODLAR
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sidebar Active State
+            const currentFile = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-item').forEach(link => {
+                if (link.getAttribute('href') === currentFile) link.classList.add('active');
+            });
+
+            // Kayıtlı Dili Yükle veya Varsayılan Olarak Almanca (de) Yap
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            setLanguage(savedLang);
+
+            // Select Değiştiğinde Dili Güncelle
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

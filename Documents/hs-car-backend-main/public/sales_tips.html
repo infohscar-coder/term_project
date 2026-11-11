@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Car | Verkaufstipps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --bg-dark: #0a0a0a; 
+            --sidebar-bg: #121212; 
+            --card-bg: #161616;
+            --text-color: #e0e0e0;
+            --border-color: #222222;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-color); 
+            display: flex; 
+            justify-content: center;
+            min-height: 100vh; 
+        }
+        
+        /* MAIN CONTENT AREA */
+        .content { 
+            flex: 1; 
+            padding: 60px 80px; 
+            position: relative;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .lang-select {
+            background: var(--sidebar-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            margin-bottom: 30px; 
+            font-size: 2.2rem;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* ACCORDION / CARD SECTION */
+        .tips-container {
+            background: var(--card-bg);
+            padding: 25px 35px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #222222;
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.05rem;
+            user-select: none;
+        }
+
+        .accordion-header .arrow {
+            color: var(--gold);
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 400px;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="header-top">
+            <a href="index.html" class="back-btn" data-i18n="back_btn">← Back to Index</a>
+            
+            <div class="lang-select-wrapper">
+                <select id="languageSelect" class="lang-select">
+                    <option value="de">DE - Deutsch</option>
+                    <option value="en">GB - English</option>
+                    <option value="ru">RU - Русский</option>
+                    <option value="tr">TR - Türkçe</option>
+                    <option value="pl">PL - Polski</option>
+                    <option value="fr">FR - Français</option>
+                    <option value="it">IT - Italiano</option>
+                    <option value="nl">NL - Nederlands</option>
+                </select>
+            </div>
+        </div>
+
+        <h1 data-i18n="title">Verkaufstipps</h1>
+
+        <div class="tips-container" id="tipsContainer">
+            <!-- Accordion items loaded dynamically -->
+        </div>
+    </main>
+
+    <script>
+        const translations = {
+            de: {
+                back_btn: "← Zurück zur Startseite",
+                title: "Verkaufstipps",
+                tips: [
+                    { q: "Wie bereite ich mein Fahrzeug optimal vor?", a: "Eine gründliche Reinigung von innen und außen erhöht den Wert deutlich. Entfernen Sie persönliche Gegenstände und lassen Sie kleine Mängel gegebenenfalls per Smart-Repair beheben." },
+                    { q: "Worauf sollte ich bei den Fotos achten?", a: "Fotografieren Sie das Auto bei Tageslicht aus verschiedenen Blickwinkeln (Front, Heck, Seiten, Innenraum, Tacho & Motorraum). Saubere Hintergründe wirken professioneller." },
+                    { q: "Welche Dokumente werden für den Verkauf benötigt?", a: "Sie benötigen die Zulassungsbescheinigung Teil I & II (Fahrzeugschein & Brief), den aktuellen TÜV-Bericht, das Serviceheft sowie Rechnungen von vergangenen Wartungen." },
+                    { q: "Wie ermittle ich den richtigen Verkaufspreis?", a: "Vergleichen Sie ähnliche Fahrzeuge auf H&S Car hinsichtlich Baujahr, Kilometerstand und Ausstattung. Setzen Sie den Preis leicht höher an, um Verhandlungsspielraum zu haben." },
+                    { q: "Anzeigenbeschreibung: Ansprechend und ehrlich formulieren", a: "Schreiben Sie einen klaren, gut strukturierten Text mit allen wesentlichen Ausstattungen und Besonderheiten. Ehrlichkeit schafft Vertrauen und spart Zeit bei der Besichtigung." },
+                    { q: "Transparenz & Historie: Vorschäden und Wartungen offenlegen", a: "Legen Sie alle bekannten Mängel, reparierte Unfallschäden und die vollständige Servicehistorie offen. Transparenz schützt vor rechtlichen Problemen nach dem Verkauf." }
+                ]
+            },
+            en: {
+                back_btn: "← Back to Index",
+                title: "Sales Tips",
+                tips: [
+                    { q: "How should I prepare my vehicle for sale?", a: "A thorough interior and exterior cleaning significantly increases value. Remove personal belongings and consider repairing minor flaws with smart-repair techniques." },
+                    { q: "What should I focus on when taking photos?", a: "Take photos in bright daylight from multiple angles (front, rear, sides, interior, dashboard, engine). Clean, clutter-free backgrounds look much more professional." },
+                    { q: "Which documents are required for the sale?", a: "You need the vehicle registration certificates (Part I & II), the latest inspection/MOT report, service history logbook, and maintenance receipts." },
+                    { q: "How do I determine the right selling price?", a: "Compare similar models on H&S Car considering year, mileage, and features. Set a realistic price slightly higher than your target to leave room for negotiation." },
+                    { q: "Listing description: Engaging and honest copy", a: "Write a clear, structured description highlighting key features and options. Honesty builds trust and avoids wasted time during viewings." },
+                    { q: "Transparency & History: Disclosing repairs and past damage", a: "Be fully transparent about past accidents, cosmetic repairs, and service records. Clear disclosure protects you legally after the transaction." }
+                ]
+            },
+            ru: {
+                back_btn: "← На главную",
+                title: "Советы по продаже автомобиля",
+                tips: [
+                    { q: "Как правильно подготовить автомобиль к продаже?", a: "Тщательная чистка салона и кузова существенно повышает стоимость. Удалите личные вещи и устраните мелкие дефекты при необходимости." },
+                    { q: "Как сделать качественные фотографии?", a: "Снимайте автомобиль при дневном свете с разных ракурсов (спереди, сзади, сбоку, салон, приборная панель). Выбирайте нейтральный фон." },
+                    { q: "Какие документы необходимы для продажи?", a: "Вам понадобятся ПТС, СТС, действующий техосмотр, сервисная книжка и чеки о пройденном обслуживании." },
+                    { q: "Как определить правильную цену?", a: "Сравните аналогичные автомобили на H&S Car по году выпуска, пробегу и комплектации. Оставьте небольшой запас для торга." },
+                    { q: "Описание объявления: Привлекательный и честный текст", a: "Составьте четкий, хорошо структурированный текст с описанием комплектации. Честность вызовет доверие и сэкономит время при осмотре." },
+                    { q: "Прозрачность и история: Открытость об обслуживании и повреждениях", a: "Честно укажите историю обслуживания, устранение дефектов и следы ДТП. Это защитит вас от возможных претензий после продажи." }
+                ]
+            },
+            tr: {
+                back_btn: "← Ana Sayfaya Dön",
+                title: "Araç Satış İpuçları",
+                tips: [
+                    { q: "Aracımı satışa nasıl hazırlamalıyım?", a: "Detaylı iç ve dış temizlik aracın değerini artırır. Kişisel eşyalarınızı çıkarın ve gerekirse küçük çizikler için pasta cila / göçük düzeltme yaptırın." },
+                    { q: "Fotoğraf çekerken nelere dikkat etmeliyim?", a: "Aracı gün ışığında farklı açılardan (ön, arka, yanlar, iç mekan, gösterge paneli ve motor) çekin. Temiz ve sade bir arka plan tercih edin." },
+                    { q: "Satış için hangi belgeler gereklidir?", a: "Ruhsat, geçerli muayene raporu, bakım defteri ve geçmiş servis faturalarını hazır bulundurun." },
+                    { q: "Doğru satış fiyatını nasıl belirlerim?", a: "H&S Car üzerindeki benzer model, yıl, km ve donanıma sahip araçları inceleyin. Pazarlık payı bırakmak için fiyatı biraz esnek belirleyin." },
+                    { q: "İlan Açıklaması: Etkileyici ve dürüst metin yazımı", a: "Aracınızın tüm önemli donanımlarını net ve düzenli bir dille anlatın. Dürüst bir anlatım alıcıda güven oluşturur ve pazarlık sürecini kolaylaştırır." },
+                    { q: "Ekspertiz ve Şeffaflık: Hasar geçmişi ve bakımlar", a: "Geçmişte yapılan bakımları, boya/değişen durumunu ve bilinen kusurları şeffaflıkla paylaşın. Şeffaflık, satış sonrası hukuki sorunların önüne geçer." }
+                ]
+            },
+            pl: {
+                back_btn: "← Powrót do strony głównej",
+                title: "Wskazówki dotyczące sprzedaży",
+                tips: [
+                    { q: "Jak optymalnie przygotować pojazd do sprzedaży?", a: "Dokładne czyszczenie wnętrza i nadwozia znacznie podnosi wartość samochodu. Usuń prywatne rzeczy i napraw drobne usterki." },
+                    { q: "Na co zwrócić uwagę robiąc zdjęcia?", a: "Rób zdjęcia w świetle dziennym z różnych perspektyw (przód, tył, boki, wnętrze, licznik). Czyste tło wygląda bardziej profesjonalnie." },
+                    { q: "Jakie dokumenty są wymagane?", a: "Potrzebujesz dowodu rejestracyjnego, karty pojazdu, ważnego przeglądu technicznego oraz książki serwisowej." },
+                    { q: "Jak ustalić odpowiednią cenę?", a: "Porównaj podobne oferty na H&S Car pod kątem roku, przebiegu i wyposażenia. Zostaw niewielki margines na negocjacje." },
+                    { q: "Opis ogłoszenia: Atrakcyjny i uczciwy tekst", a: "Napisz przejrzysty, dobrze ustrukturyzowany opis ze szczegółami wyposażenia. Uczciwość buduje zaufanie i oszczędza czas podczas oględzin." },
+                    { q: "Przejrzystość i historia: Uczciwość ws. napraw i uszkodzeń", a: "Przedstaw pełną historię serwisową oraz ewentualne dawne uszkodzenia. Przejrzystość chroni przed problemami prawnymi po sprzedaży." }
+                ]
+            },
+            fr: {
+                back_btn: "← Retour à l'accueil",
+                title: "Conseils pour vendre votre véhicule",
+                tips: [
+                    { q: "Comment préparer au mieux mon véhicule ?", a: "Un nettoyage complet de l'intérieur et de l'extérieur augmente nettement la valeur. Retirez vos effets personnels et corrigez les petites imperfections." },
+                    { q: "Comment réussir les photos de l'annonce ?", a: "Prenez des photos à la lumière du jour sous plusieurs angles (avant, arrière, côtés, habitacle, compteur). Privilégiez un fond propre." },
+                    { q: "Quels documents sont nécessaires ?", a: "Vous aurez besoin de la carte grise, du rapport de contrôle technique récent, du carnet d'entretien et des factures de réparations." },
+                    { q: "Comment fixer le bon prix de vente ?", a: "Comparez les véhicules similaires sur H&S Car selon l'année, le kilométrage et les options. Prévoyez une légère marge de négociation." },
+                    { q: "Description de l'annonce : Un texte attrayant et honnête", a: "Rédigez un texte clair et bien structuré listant les équipements clés. L'honnêteté inspire confiance et gagne du temps lors des visites." },
+                    { q: "Transparence & Historique : Divulguer l'entretien et les dommages", a: "Mentionnez clairement l'historique d'entretien et les éventuels dommages passés. La transparence évite les litiges après la vente." }
+                ]
+            },
+            it: {
+                back_btn: "← Torna alla pagina iniziale",
+                title: "Consigli per la vendita",
+                tips: [
+                    { q: "Come preparare al meglio il veicolo?", a: "Una pulizia approfondita di interni ed esterni aumenta notevolmente il valore. Rimuovi gli oggetti personali e ripara piccoli difetti di carrozzeria." },
+                    { q: "Cosa considerare per le fotografie?", a: "Scatta le foto alla luce del sole da diverse angolazioni (fronte, retro, lati, interni, cruscotto). Uno sfondo pulito trasmette professionalità." },
+                    { q: "Quali documenti servono per la vendita?", a: "Servono la carta di circolazione, il certificato di proprietà, la revisione valida e il libretto dei tagliandi." },
+                    { q: "Come stabilire il prezzo di vendita corretto?", a: "Confronta annunci simili su H&S Car per anno, chilometraggio e optional. Imposta un prezzo leggermente trattabile." },
+                    { q: "Descrizione dell'annuncio: Testo incisivo e onesto", a: "Scrivi un testo chiaro e ben strutturato con tutti gli optional principali. L'onestà crea fiducia ed evita perdite di tempo durante le visite." },
+                    { q: "Trasparenza e storia: Mostrare manutenzioni e danni pregressi", a: "Condividi in modo trasparente la cronologia dei tagliandi e gli eventuali danni riparati. La trasparenza previene contenziosi legali post-vendita." }
+                ]
+            },
+            nl: {
+                back_btn: "← Terug naar de homepage",
+                title: "Verkooptips voor uw auto",
+                tips: [
+                    { q: "Hoe bereid ik mijn auto optimaal vor?", a: "Een grondige reiniging van binnen en buiten verhoogt de waarde aanzienlijk. Verwijder persoonlijke spullen en herstel eventuele kleine beschadigingen." },
+                    { q: "Waar moet ik op letten bij het maken van foto's?", a: "Maak foto's bij daglicht vanuit verschillende hoeken (voor, achter, zijkanten, interieur, dashboard). Een schone achtergrond staat professioneler." },
+                    { q: "Welke documenten zijn nodig voor de verkoop?", a: "U heeft het kentekenbewijs, het geldige APK-keuringsrapport, het onderhoudsboekje en eventuele onderhoudsfacturen nodig." },
+                    { q: "Hoe bepaal ik de juiste vraagprijs?", a: "Vergelijk vergelijkbare auto's op H&S Car op basis van bouwjaar, kilometerstand en opties. Reken een kleine onderhandelingsmarge in." },
+                    { q: "Advertentiebeschrijving: Aantrekkelijke en eerlijke tekst", a: "Schrijf een duidelijke, goed gestructureerde tekst met alle belangrijke opties. Eerlijkheid schept vertrouwen en bespaart tijd bij de bezichtiging." },
+                    { q: "Transparantie & Historie: Onderhoud en schade vermelden", a: "Wees open over de onderhoudshistorie en eventuele herstelde schades. Transparantie voorkomt juridische problemen achteraf." }
+                ]
+            }
+        };
+
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'de'; 
+
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Render Accordion tips
+            const container = document.getElementById('tipsContainer');
+            container.innerHTML = '';
+            
+            translations[lang].tips.forEach(item => {
+                const accItem = document.createElement('div');
+                accItem.className = 'accordion-item';
+                accItem.innerHTML = `
+                    <div class="accordion-header">
+                        <span>${item.q}</span>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <p>${item.a}</p>
+                    </div>
+                `;
+                
+                accItem.addEventListener('click', () => {
+                    const isActive = accItem.classList.contains('active');
+                    document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+                    if (!isActive) accItem.classList.add('active');
+                });
+
+                container.appendChild(accItem);
+            });
+
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('languageSelect').value = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            setLanguage(savedLang);
+
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

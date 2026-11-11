@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Car | Privacy Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --bg-dark: #0a0a0a; 
+            --sidebar-bg: #121212; 
+            --card-bg: #161616;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-color); 
+            display: flex; 
+            min-height: 100vh; 
+        }
+        
+        /* SIDEBAR STYLES */
+        .sidebar { 
+            width: 280px; 
+            background: var(--sidebar-bg); 
+            border-right: 1px solid #222; 
+            padding-top: 50px; 
+            flex-shrink: 0;
+        }
+
+        .nav-item { 
+            display: block; 
+            padding: 20px 30px; 
+            color: #888; 
+            text-decoration: none; 
+            border-bottom: 1px solid #1a1a1a; 
+            transition: 0.3s ease; 
+        }
+
+        .nav-item:hover, .nav-item.active { 
+            border-left: 4px solid var(--gold); 
+            color: var(--gold); 
+            background: #1a1a1a; 
+        }
+        
+        /* MAIN CONTENT AREA */
+        .content { 
+            flex: 1; 
+            padding: 60px 80px; 
+            position: relative;
+            max-width: 1000px;
+        }
+
+        /* LANGUAGE SELECTOR IN HEADER */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .lang-select {
+            background: var(--sidebar-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            margin-bottom: 30px; 
+            font-size: 2.2rem;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* LEGAL CONTENT STYLING */
+        .legal-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            line-height: 1.7;
+        }
+
+        .legal-section h2 {
+            color: var(--gold);
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .legal-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .legal-section p, .legal-section ul {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .legal-section ul {
+            padding-left: 20px;
+        }
+
+        .legal-section li {
+            margin-bottom: 5px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #2a2a2a;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="imprint.html" class="nav-item" data-i18n="nav_legal">Legal Notice</a>
+        <a href="terms.html" class="nav-item" data-i18n="nav_terms">Terms and Conditions</a>
+        <a href="privacy.html" class="nav-item" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="help.html" class="nav-item" data-i18n="nav_help">Help Center</a>
+        <a href="cookies.html" class="nav-item" data-i18n="nav_cookies">Cookie Policy</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="header-top">
+            <a href="index.html" class="back-btn" data-i18n="back_btn">← Back to Index</a>
+            
+            <!-- Language Selector -->
+            <div class="lang-select-wrapper">
+                <select id="languageSelect" class="lang-select">
+                    <option value="de">DE - Deutsch</option>
+                    <option value="en">GB - English</option>
+                    <option value="ru">RU - Русский</option>
+                    <option value="tr">TR - Türkçe</option>
+                    <option value="pl">PL - Polski</option>
+                    <option value="fr">FR - Français</option>
+                    <option value="it">IT - Italiano</option>
+                    <option value="nl">NL - Nederlands</option>
+                </select>
+            </div>
+        </div>
+
+        <h1 data-i18n="title">Privacy Policy</h1>
+
+        <div class="legal-section" id="legalContent">
+            <!-- Dinamik Metin JavaScript Tarafından Yüklenecek -->
+        </div>
+    </main>
+
+    <script>
+        // 1. DİL VERİ SETİ (8 Dil)
+        const translations = {
+            de: {
+                nav_legal: "Impressum",
+                nav_terms: "AGB",
+                nav_privacy: "Datenschutz",
+                nav_help: "Hilfe-Center",
+                nav_cookies: "Cookie-Richtlinie",
+                back_btn: "← Zurück zur Startseite",
+                title: "Datenschutzerklärung (DSGVO)",
+                html: `
+                    <p>Der Schutz Ihrer persönlichen Daten ist für H&S Car von höchster Bedeutung. Nachfolgend informieren wir Sie über die Erhebung und Verwendung persönlicher Daten gemäß der Datenschutz-Grundverordnung (DSGVO).</p>
+
+                    <h2>1. Verantwortlicher</h2>
+                    <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist H&S Car, E-Mail: info@hs-car.de).</p>
+
+                    <h2>2. Datenerfassung auf unserer Website</h2>
+                    <p>Wir erheben personenbezogene Daten, wenn Sie sich auf unserer Plattform registrieren, ein Fahrzeuginserat erstellen oder uns kontaktieren:</p>
+                    <ul>
+                        <li><strong>Konto- und Authentifizierungsdaten:</strong> E-Mail-Adresse, Name und Passwort (verarbeitet über Google Firebase Auth).</li>
+                        <li><strong>Inseratdaten:</strong> Fahrzeugdetails, Fotos, Zustand sowie Kontaktdaten für Interessenten.</li>
+                        <li><strong>Technische Daten:</strong> IP-Adresse, Browser-Typ und Zugriffszeiten zur Sicherstellung der Plattformstabilität.</li>
+                    </ul>
+
+                    <h2>3. Nutzung von Google Firebase</h2>
+                    <p>Unsere Plattform nutzt Infrastruktur-Dienste von Google Firebase (Firebase Authentication, Cloud Firestore und Firebase Storage). Die Datenverarbeitung erfolgt auf sicheren Servern unter Anwendung von Standardvertragsklauseln der Europäischen Union.</p>
+
+                    <h2>4. Ihre Rechte nach DSGVO</h2>
+                    <p>Sie haben jederzeit das Recht auf:</p>
+                    <ul>
+                        <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten.</li>
+                        <li>Berichtigung unrichtiger Daten oder Löschung Ihres Benutzerkontos.</li>
+                        <li>Einschränkung der Datenverarbeitung und Datenübertragbarkeit.</li>
+                    </ul>
+
+                    <hr>
+                    <h2>5. Datensicherheit</h2>
+                    <p>Wir verwenden moderne SSL/TLS-Verschlüsselungen und Sicherheitsregeln in der Datenbank, um Ihre Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen.</p>
+                `
+            },
+            en: {
+                nav_legal: "Legal Notice",
+                nav_terms: "Terms and Conditions",
+                nav_privacy: "Privacy Policy",
+                nav_help: "Help Center",
+                nav_cookies: "Cookie Policy",
+                back_btn: "← Back to Index",
+                title: "Privacy Policy (GDPR)",
+                html: `
+                    <p>The protection of your personal data is of the utmost importance to H&S Car. Below we inform you about the collection and use of personal data in accordance with the General Data Protection Regulation (GDPR).</p>
+
+                    <h2>1. Data Controller</h2>
+                    <p>The controller responsible for data processing on this website is H&S Car ([Sample Street 123, 10115 Berlin], Email: info@hs-car.de).</p>
+
+                    <h2>2. Data Collection on Our Website</h2>
+                    <p>We collect personal data when you register on our platform, create a vehicle listing, or contact us:</p>
+                    <ul>
+                        <li><strong>Account & Auth Data:</strong> Email address, name, and password (processed via Google Firebase Auth).</li>
+                        <li><strong>Listing Data:</strong> Vehicle details, photos, condition, and seller contact information.</li>
+                        <li><strong>Technical Data:</strong> IP address, browser type, and access times to ensure platform stability.</li>
+                    </ul>
+
+                    <h2>3. Use of Google Firebase</h2>
+                    <p>Our platform uses infrastructure services from Google Firebase (Firebase Authentication, Cloud Firestore, and Firebase Storage). Data is processed on secure servers applying EU Standard Contractual Clauses.</p>
+
+                    <h2>4. Your Rights under GDPR</h2>
+                    <p>You have the right at any time to:</p>
+                    <ul>
+                        <li>Access your personal data stored with us.</li>
+                        <li>Request correction of inaccurate data or deletion of your user account.</li>
+                        <li>Request restriction of data processing and data portability.</li>
+                    </ul>
+
+                    <hr>
+                    <h2>5. Data Security</h2>
+                    <p>We employ modern SSL/TLS encryption and database security rules to protect your data against unauthorized access, loss, or misuse.</p>
+                `
+            },
+            ru: {
+                nav_legal: "Правовая информация",
+                nav_terms: "Условия использования",
+                nav_privacy: "Политика конфиденциальности",
+                nav_help: "Справочный центр",
+                nav_cookies: "Политика cookie",
+                back_btn: "← На главную",
+                title: "Политика конфиденциальности (GDPR)",
+                html: `
+                    <p>Защита ваших персональных данных имеет первостепенное значение для H&S Car. Настоящая Политика объясняет порядок сбора и обработки данных в соответствии с GDPR.</p>
+
+                    <h2>1. Ответственный за обработку данных</h2>
+                    <p>Ответственным лицом является H&S Car, E-Mail: info@hs-car.de).</p>
+
+                    <h2>2. Сбор данных</h2>
+                    <p>Мы собираем данные при регистрации, создании объявлений или обращении в поддержку (Email, имя, информация об авто, технические данные IP).</p>
+
+                    <h2>3. Использование Google Firebase</h2>
+                    <p>Платформа использует сервисы Google Firebase (Auth, Firestore, Storage) для безопасного хранения и аутентификации данных.</p>
+
+                    <hr>
+                    <h2>4. Ваши права</h2>
+                    <p>Вы имеете право на доступ, изменение или полное удаление своих персональных данных и аккаунта в любое время.</p>
+                `
+            },
+            tr: {
+                nav_legal: "Yasal Bildirim",
+                nav_terms: "Şartlar ve Koşullar",
+                nav_privacy: "Gizlilik Politikası",
+                nav_help: "Yardım Merkezi",
+                nav_cookies: "Çerez Politikası",
+                back_btn: "← Ana Sayfaya Dön",
+                title: "Gizlilik Politikası (KVKK / GDPR)",
+                html: `
+                    <p>Kişisel verilerinizin korunması H&S Car için büyük önem taşır. Aşağıda, verilerinizin Avrupa Genel Veri Koruma Tüzüğü (GDPR) uyarınca nasıl toplandığı ve işlendiği açıklanmaktadır.</p>
+
+                    <h2>1. Veri Sorumlusu</h2>
+                    <p>Bu web sitesindeki veri işlemeden sorumlu taraf H&S Car firmasıdır, E-Posta: info@hs-car.de).</p>
+
+                    <h2>2. Toplanan Veriler</h2>
+                    <p>Platformumuza kaydolduğunuzda, araç ilanı verdiğinizde veya bizimle iletişime geçtiğinizde kişisel veriler işlenir:</p>
+                    <ul>
+                        <li><strong>Hesap Verileri:</strong> E-posta adresi, ad-soyad ve parola (Google Firebase Auth üzerinden güvenle işlenir).</li>
+                        <li><strong>İlan Verileri:</strong> Araç detayları, görseller, araç durumu ve satıcı iletişim bilgileri.</li>
+                        <li><strong>Teknik Veriler:</strong> Sistem güvenliği ve performansı için IP adresi ve tarayıcı bilgileri.</li>
+                    </ul>
+
+                    <h2>3. Google Firebase Kullanımı</h2>
+                    <p>Platformumuz Google Firebase altyapısını (Auth, Firestore, Storage) kullanmaktadır. Verileriniz AB standartlarına uygun güvenli sunucularda muhafaza edilir.</p>
+
+                    <h2>4. Kullanıcı Haklarınız</h2>
+                    <p>Dilediğiniz zaman saklanan verilerinizi talep etme, düzeltme veya hesabınızla birlikte tamamen silinmesini isteme hakkına sahipsiniz.</p>
+
+                    <hr>
+                    <h2>5. Veri Güvenliği</h2>
+                    <p>Verilerinizi yetkisiz erişim veya kayıplara karşı korumak için güncel SSL/TLS şifreleme yöntemleri ve veritabanı güvenlik kuralları uygulanmaktadır.</p>
+                `
+            },
+            pl: {
+                nav_legal: "Nota prawna",
+                nav_terms: "Warunki użytkowania",
+                nav_privacy: "Polityka prywatności",
+                nav_help: "Centrum pomocy",
+                nav_cookies: "Polityka cookies",
+                back_btn: "← Powrót do strony głównej",
+                title: "Polityka prywatności (RODO)",
+                html: `
+                    <p>Ochrona Twoich danych osobowych jest dla H&S Car priorytetem. Poniżej informujemy o zbieraniu i przetwarzaniu danych zgodnie z RODO.</p>
+
+                    <h2>1. Administrator danych</h2>
+                    <p>Administratorem danych jest H&S Car, E-mail: info@hs-car.de).</p>
+
+                    <h2>2. Zbieranie danych</h2>
+                    <p>Gromadzimy dane podczas rejestracji, dodawania ogłoszeń pojazdów oraz kontaktu z nami (E-mail, imię, dane pojazdu, adres IP).</p>
+
+                    <h2>3. Google Firebase</h2>
+                    <p>Nasza platforma korzysta z bezpiecznych usług Google Firebase (Auth, Firestore, Storage) do zarządzania danymi użytkowników.</p>
+
+                    <hr>
+                    <h2>4. Twoje prawa</h2>
+                    <p>Masz prawo do wglądu, poprawiania lub usunięcia swoich danych osobowych w dowolnym momencie.</p>
+                `
+            },
+            fr: {
+                nav_legal: "Mentions légales",
+                nav_terms: "Conditions générales",
+                nav_privacy: "Politique de confidentialité",
+                nav_help: "Centre d'aide",
+                nav_cookies: "Gestion des cookies",
+                back_btn: "← Retour à l'accueil",
+                title: "Politique de confidentialité (RGPD)",
+                html: `
+                    <p>La protection de vos données personnelles est une priorité pour H&S Car. Voici comment nous traitons vos données conformément au RGPD.</p>
+
+                    <h2>1. Responsable du traitement</h2>
+                    <p>Le responsable du traitement des données est H&S Car, E-mail: info@hs-car.de).</p>
+
+                    <h2>2. Collecte des données</h2>
+                    <p>Nous collectons des données lors de votre inscription, de la création d'une annonce ou d'un contact (E-mail, nom, détails du véhicule, adresse IP).</p>
+
+                    <h2>3. Utilisation de Google Firebase</h2>
+                    <p>Nous utilisons l'infrastructure Google Firebase (Auth, Firestore, Storage) pour garantir la sécurité et la confidentialité de vos données.</p>
+
+                    <hr>
+                    <h2>4. Vos droits</h2>
+                    <p>Vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles à tout moment.</p>
+                `
+            },
+            it: {
+                nav_legal: "Note legali",
+                nav_terms: "Termini e condizioni",
+                nav_privacy: "Informativa sulla privacy",
+                nav_help: "Centro assistenza",
+                nav_cookies: "Politica sui cookie",
+                back_btn: "← Torna alla pagina iniziale",
+                title: "Informativa sulla privacy (GDPR)",
+                html: `
+                    <p>La protezione dei tuoi dati personali è fondamentale per H&S Car. Di seguito le informazioni sul trattamento dei dati secondo il GDPR.</p>
+
+                    <h2>1. Titolare del trattamento</h2>
+                    <p>Il titolare del trattamento è H&S Car, E-mail: info@hs-car.de).</p>
+
+                    <h2>2. Raccolta dei dati</h2>
+                    <p>Raccogliamo i dati durante la registrazione, la creazione di annunci auto o il contatto (E-mail, nome, dettagli del veicolo, IP).</p>
+
+                    <h2>3. Google Firebase</h2>
+                    <p>La nostra piattaforma utilizza i servizi Google Firebase (Auth, Firestore, Storage) per garantire la massima sicurezza dei dati.</p>
+
+                    <hr>
+                    <h2>4. I tuoi diritti</h2>
+                    <p>Hai il diritto di accedere, rettificare o cancellare i tuoi dati personali in qualsiasi momento.</p>
+                `
+            },
+            nl: {
+                nav_legal: "Juridische kennisgeving",
+                nav_terms: "Algemene voorwaarden",
+                nav_privacy: "Privacybeleid",
+                nav_help: "Helpcentrum",
+                nav_cookies: "Cookiebeleid",
+                back_btn: "← Terug naar de homepage",
+                title: "Privacybeleid (AVG)",
+                html: `
+                    <p>De bescherming van uw persoonlijke gegevens is voor H&S Car van groot belang. Hieronder informeren wij u over de gegevensverwerking volgens de AVG (GDPR).</p>
+
+                    <h2>1. Verantwoordelijke</h2>
+                    <p>Verantwoordelijke voor de gegevensverwerking is H&S Car, E-mail: info@hs-car.de).</p>
+
+                    <h2>2. Gegevensverzameling</h2>
+                    <p>Wij verzamelen gegevens bij registratie, het plaatsen van een voertuigadvertentie of contact (E-mail, naam, voertuiggegevens, IP-adres).</p>
+
+                    <h2>3. Google Firebase</h2>
+                    <p>Ons platform maakt gebruik van de infrastructuur van Google Firebase (Auth, Firestore, Storage) voor veilige gegevensopslag.</p>
+
+                    <hr>
+                    <h2>4. Uw rechten</h2>
+                    <p>U heeft te allen tijde het recht om uw persoonlijke gegevens in te zien, te corrigeren of te verwijderen.</p>
+                `
+            }
+        };
+
+        // 2. DİL DEĞİŞTİRME FONKSİYONU
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'de'; 
+
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.getElementById('legalContent').innerHTML = translations[lang].html;
+
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('languageSelect').value = lang;
+        }
+
+        // 3. SAYFA İLİŞKİLENDİRME VE YÜKLEME
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentFile = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-item').forEach(link => {
+                if (link.getAttribute('href') === currentFile) link.classList.add('active');
+            });
+
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            setLanguage(savedLang);
+
+            document.getElementById('languageSelect').value = savedLang;
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

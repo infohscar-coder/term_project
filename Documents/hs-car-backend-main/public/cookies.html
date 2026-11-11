@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&S Car | Cookie Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --bg-dark: #0a0a0a; 
+            --sidebar-bg: #121212; 
+            --card-bg: #161616;
+            --text-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg-dark); 
+            color: var(--text-color); 
+            display: flex; 
+            min-height: 100vh; 
+        }
+        
+        /* SIDEBAR STYLES */
+        .sidebar { 
+            width: 280px; 
+            background: var(--sidebar-bg); 
+            border-right: 1px solid #222; 
+            padding-top: 50px; 
+            flex-shrink: 0;
+        }
+
+        .nav-item { 
+            display: block; 
+            padding: 20px 30px; 
+            color: #888; 
+            text-decoration: none; 
+            border-bottom: 1px solid #1a1a1a; 
+            transition: 0.3s ease; 
+        }
+
+        .nav-item:hover, .nav-item.active { 
+            border-left: 4px solid var(--gold); 
+            color: var(--gold); 
+            background: #1a1a1a; 
+        }
+        
+        /* MAIN CONTENT AREA */
+        .content { 
+            flex: 1; 
+            padding: 60px 80px; 
+            position: relative;
+            max-width: 1000px;
+        }
+
+        /* LANGUAGE SELECTOR IN HEADER */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .lang-select {
+            background: var(--sidebar-bg);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-select option {
+            background: var(--sidebar-bg);
+            color: #fff;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--gold); 
+            margin-bottom: 30px; 
+            font-size: 2.2rem;
+        }
+
+        .back-btn { 
+            display: inline-block; 
+            color: var(--gold); 
+            text-decoration: none; 
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        /* LEGAL CONTENT STYLING */
+        .legal-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #222;
+            line-height: 1.7;
+        }
+
+        .legal-section h2 {
+            color: var(--gold);
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .legal-section h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .legal-section p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .cookie-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #2a2a2a;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav class="sidebar">
+        <a href="imprint.html" class="nav-item" data-i18n="nav_legal">Legal Notice</a>
+        <a href="terms.html" class="nav-item" data-i18n="nav_terms">Terms and Conditions</a>
+        <a href="privacy.html" class="nav-item" data-i18n="nav_privacy">Privacy Policy</a>
+        <a href="help.html" class="nav-item" data-i18n="nav_help">Help Center</a>
+        <a href="cookies.html" class="nav-item" data-i18n="nav_cookies">Cookie Policy</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <div class="header-top">
+            <a href="index.html" class="back-btn" data-i18n="back_btn">← Back to Index</a>
+            
+            <!-- Language Selector (Görseldeki Sıralama) -->
+            <div class="lang-select-wrapper">
+                <select id="languageSelect" class="lang-select">
+                    <option value="de">DE - Deutsch</option>
+                    <option value="en">GB - English</option>
+                    <option value="ru">RU - Русский</option>
+                    <option value="tr">TR - Türkçe</option>
+                    <option value="pl">PL - Polski</option>
+                    <option value="fr">FR - Français</option>
+                    <option value="it">IT - Italiano</option>
+                    <option value="nl">NL - Nederlands</option>
+                </select>
+            </div>
+        </div>
+
+        <h1 data-i18n="title">Cookie Policy</h1>
+
+        <div class="legal-section" id="legalContent">
+            <!-- Dinamik Metin JavaScript Tarafından Yüklenecek -->
+        </div>
+    </main>
+
+    <script>
+        // 1. DİL VERİ SETİ (8 Dil)
+        const translations = {
+            de: {
+                nav_legal: "Impressum",
+                nav_terms: "AGB",
+                nav_privacy: "Datenschutz",
+                nav_help: "Hilfe-Center",
+                nav_cookies: "Cookie-Richtlinie",
+                back_btn: "← Zurück zur Startseite",
+                title: "Cookie-Richtlinie",
+                html: `
+                    <p>Diese Cookie-Richtlinie erklärt, wie H&S Car Cookies und ähnliche Technologien verwendet, um Ihre Präferenzen zu speichern und eine optimale Benutzererfahrung zu gewährleisten.</p>
+                    
+                    <span class="cookie-badge">Erforderlich</span>
+                    <h2>1. Notwendige Cookies</h2>
+                    <p>Diese Cookies sind für den technischen Betrieb unserer Fahrzeugplattform unerlässlich. Sie ermöglichen grundlegende Funktionen wie die Authentifizierung (Firebase Login), Sprachauswahl und die Speicherung Ihrer Filterpräferenzen.</p>
+
+                    <span class="cookie-badge">Analyse</span>
+                    <h2>2. Leistungs- und Analyse-Cookies</h2>
+                    <p>Wir verwenden diese Cookies, um zu verstehen, wie Besucher mit unserer Website interagieren (z. B. aufgerufene Fahrzeuginserate, Verweildauer). Dies hilft uns, die Performance unserer digitalen Infrastruktur kontinuierlich zu verbessern.</p>
+
+                    <span class="cookie-badge">Präferenzen</span>
+                    <h2>3. Funktionale Cookies</h2>
+                    <p>Diese Cookies ermöglichen es der Website, erweiterte Funktionen bereitzustellen, wie z. B. das Speichern Ihrer bevorzugten Währung, Fahrzeugvergleiche oder gemerkte Inserate.</p>
+
+                    <hr>
+                    <h2>4. Verwaltung von Cookies</h2>
+                    <p>Sie können Cookies jederzeit über Ihre Browser-Einstellungen deaktivieren oder löschen. Bitte beachten Sie, dass das Deaktivieren bestimmter Cookies die Funktionalität unserer Plattform beeinträchtigen kann.</p>
+                `
+            },
+            en: {
+                nav_legal: "Legal Notice",
+                nav_terms: "Terms and Conditions",
+                nav_privacy: "Privacy Policy",
+                nav_help: "Help Center",
+                nav_cookies: "Cookie Policy",
+                back_btn: "← Back to Index",
+                title: "Cookie Policy",
+                html: `
+                    <p>This Cookie Policy explains how H&S Car uses cookies and similar technologies to remember your preferences and ensure an optimal user experience.</p>
+                    
+                    <span class="cookie-badge">Essential</span>
+                    <h2>1. Necessary Cookies</h2>
+                    <p>These cookies are essential for the technical operation of our vehicle platform. They enable basic functions such as authentication (Firebase Login), language selection, and storing your filter preferences.</p>
+
+                    <span class="cookie-badge">Analytics</span>
+                    <h2>2. Performance & Analytics Cookies</h2>
+                    <p>We use these cookies to understand how visitors interact with our website (e.g., vehicle listings viewed, duration of stay). This helps us continuously improve the performance of our digital infrastructure.</p>
+
+                    <span class="cookie-badge">Preferences</span>
+                    <h2>3. Functional Cookies</h2>
+                    <p>These cookies allow the website to provide enhanced features, such as saving your preferred currency, vehicle comparisons, or bookmarked listings.</p>
+
+                    <hr>
+                    <h2>4. Managing Cookies</h2>
+                    <p>You can disable or delete cookies at any time through your browser settings. Please note that disabling certain cookies may affect the functionality of our platform.</p>
+                `
+            },
+            ru: {
+                nav_legal: "Правовая информация",
+                nav_terms: "Условия использования",
+                nav_privacy: "Политика конфиденциальности",
+                nav_help: "Справочный центр",
+                nav_cookies: "Политика cookie",
+                back_btn: "← На главную",
+                title: "Политика использования файлов cookie",
+                html: `
+                    <p>Настоящая Политика объясняет, как H&S Car использует файлы cookie и аналогичные технологии для обеспечения наилучшего пользовательского опыта.</p>
+                    
+                    <span class="cookie-badge">Обязательные</span>
+                    <h2>1. Необходимые файлы cookie</h2>
+                    <p>Эти cookie необходимы для работы автомобильной платформы. Они обеспечивают базовые функции, такие как авторизация (Firebase Login), выбор языка и сохранение фильтров поиска.</p>
+
+                    <span class="cookie-badge">Аналитика</span>
+                    <h2>2. Аналитические файлы cookie</h2>
+                    <p>Мы используем эти файлы для анализа взаимодействия пользователей с сайтом (просмотренные объявления, время пребывания), что помогает нам улучшать сервис.</p>
+
+                    <hr>
+                    <h2>3. Управление cookie</h2>
+                    <p>Вы можете отключить или удалить файлы cookie в настройках вашего браузера в любое время.</p>
+                `
+            },
+            tr: {
+                nav_legal: "Yasal Bildirim",
+                nav_terms: "Şartlar ve Koşullar",
+                nav_privacy: "Gizlilik Politikası",
+                nav_help: "Yardım Merkezi",
+                nav_cookies: "Çerez Politikası",
+                back_btn: "← Ana Sayfaya Dön",
+                title: "Çerez (Cookie) Politikası",
+                html: `
+                    <p>Bu Çerez Politikası, H&S Car platformunun tercihlerinizi hatırlamak ve kusursuz bir kullanıcı deneyimi sunmak için çerezleri nasıl kullandığını açıklar.</p>
+                    
+                    <span class="cookie-badge">Zorunlu</span>
+                    <h2>1. Gerekli Çerezler</h2>
+                    <p>Araç platformumuzun teknik olarak çalışması için bu çerezler zorunludur. Kullanıcı girişi (Firebase Auth), dil seçimi ve arama filtrelerinizin hatırlanması gibi temel işlevleri sağlar.</p>
+
+                    <span class="cookie-badge">Analitik</span>
+                    <h2>2. Performans ve Analiz Çerezleri</h2>
+                    <p>Ziyaretçilerin platformla nasıl etkileşime girdiğini (incelenen araç ilanları, sayfada kalma süresi) anlamak için bu çerezleri kullanırız. Bu veriler altyapımızı geliştirmemize yardımcı olur.</p>
+
+                    <span class="cookie-badge">Tercihler</span>
+                    <h2>3. İşlevsel Çerezler</h2>
+                    <p>Bu çerezler, favori ilanlarınızın kaydedilmesi veya para birimi seçimleriniz gibi gelişmiş özelliklerin sunulmasına olanak tanır.</p>
+
+                    <hr>
+                    <h2>4. Çerezleri Yönetme</h2>
+                    <p>Çerezleri dilediğiniz zaman tarayıcı ayarlarınızdan devre dışı bırakabilir veya silebilirsiniz. Ancak zorunlu çerezlerin kapatılması sitenin bazı işlevlerini kısıtlayabilir.</p>
+                `
+            },
+            pl: {
+                nav_legal: "Nota prawna",
+                nav_terms: "Warunki użytkowania",
+                nav_privacy: "Polityka prywatności",
+                nav_help: "Centrum pomocy",
+                nav_cookies: "Polityka cookies",
+                back_btn: "← Powrót do strony głównej",
+                title: "Polityka plików cookies",
+                html: `
+                    <p>Niniejsza Polityka wyjaśnia, w jaki sposób H&S Car używa plików cookie w celu zapamiętania Twoich preferencji i zapewnienia optymalnej obsługi.</p>
+                    
+                    <span class="cookie-badge">Niezbędne</span>
+                    <h2>1. Niezbędne pliki cookie</h2>
+                    <p>Te pliki cookie są niezbędne do prawidłowego działania naszej platformy. Umożliwiają podstawowe funkcje, takie jak logowanie (Firebase), wybór języka oraz zapamiętywanie filtrów.</p>
+
+                    <span class="cookie-badge">Analityka</span>
+                    <h2>2. Analityczne pliki cookie</h2>
+                    <p>Używamy tych plików cookie, aby zrozumieć, w jaki sposób użytkownicy korzystają z naszej witryny i ulepszać naszą infrastrukturę cyfrową.</p>
+
+                    <hr>
+                    <h2>3. Zarządzanie plikami cookie</h2>
+                    <p>Możesz wyłączyć lub usunąć pliki cookie w dowolnym momentu w ustawieniach swojej przeglądarki.</p>
+                `
+            },
+            fr: {
+                nav_legal: "Mentions légales",
+                nav_terms: "Conditions générales",
+                nav_privacy: "Politique de confidentialité",
+                nav_help: "Centre d'aide",
+                nav_cookies: "Gestion des cookies",
+                back_btn: "← Retour à l'accueil",
+                title: "Politique relative aux cookies",
+                html: `
+                    <p>Cette politique explique comment H&S Car utilise les cookies et technologies similaires pour mémoriser vos préférences et garantir une expérience utilisateur optimale.</p>
+                    
+                    <span class="cookie-badge">Essentiels</span>
+                    <h2>1. Cookies nécessaires</h2>
+                    <p>Ces cookies sont indispensables au fonctionnement technique de notre plateforme automobile. Ils permettent l'authentification (Firebase), la sélection de la langue et la sauvegarde de vos filtres de recherche.</p>
+
+                    <span class="cookie-badge">Analytiques</span>
+                    <h2>2. Cookies de performance et d'analyse</h2>
+                    <p>Nous utilisons ces cookies pour comprendre comment les visiteurs interagissent avec notre site afin d'en améliorer continuellement les performances.</p>
+
+                    <hr>
+                    <h2>3. Gestion des cookies</h2>
+                    <p>Vous pouvez désactiver ou supprimer les cookies à tout moment via les paramètres de votre navigateur.</p>
+                `
+            },
+            it: {
+                nav_legal: "Note legali",
+                nav_terms: "Termini e condizioni",
+                nav_privacy: "Informativa sulla privacy",
+                nav_help: "Centro assistenza",
+                nav_cookies: "Politica sui cookie",
+                back_btn: "← Torna alla pagina iniziale",
+                title: "Informativa sui cookie",
+                html: `
+                    <p>Questa Informativa spiega come H&S Car utilizza i cookie per ricordare le tue preferenze e garantire un'esperienza utente ottimale.</p>
+                    
+                    <span class="cookie-badge">Essenziali</span>
+                    <h2>1. Cookie necessari</h2>
+                    <p>Questi cookie sono essenziali per il funzionamento tecnico della nostra piattaforma di veicoli (autenticazione Firebase, selezione della lingua e filtri di ricerca).</p>
+
+                    <span class="cookie-badge">Analitica</span>
+                    <h2>2. Cookie analitici</h2>
+                    <p>Utilizziamo questi cookie per comprendere l'interazione degli utenti con il sito e migliorare continuamente la nostra infrastruttura digitale.</p>
+
+                    <hr>
+                    <h2>3. Gestione dei cookie</h2>
+                    <p>È possibile disabilitare o cancellare i cookie in qualsiasi momento attraverso le impostazioni del browser.</p>
+                `
+            },
+            nl: {
+                nav_legal: "Juridische kennisgeving",
+                nav_terms: "Algemene voorwaarden",
+                nav_privacy: "Privacybeleid",
+                nav_help: "Helpcentrum",
+                nav_cookies: "Cookiebeleid",
+                back_btn: "← Terug naar de homepage",
+                title: "Cookiebeleid",
+                html: `
+                    <p>Dit Cookiebeleid legt uit hoe H&S Car cookies gebruikt om uw voorkeuren zuiver te onthouden en een optimale gebruikerservaring te bieden.</p>
+                    
+                    <span class="cookie-badge">Noodzakelijk</span>
+                    <h2>1. Noodzakelijke cookies</h2>
+                    <p>Deze cookies zijn essentieel voor de technische werking van ons voertuigplatform (Firebase-inloggen, taalselectie en opslag van zoekfilters).</p>
+
+                    <span class="cookie-badge">Analytisch</span>
+                    <h2>2. Analytische cookies</h2>
+                    <p>Wij gebruiken deze cookies om te begrijpen hoe bezoekers onze platform gebruiken en om onze digitale prestaties te verbeteren.</p>
+
+                    <hr>
+                    <h2>3. Cookies beheren</h2>
+                    <p>U kunt cookies op elk moment uitschakelen of verwijderen via de instellingen van uw browser.</p>
+                `
+            }
+        };
+
+        // 2. DİL DEĞİŞTİRME FONKSİYONU
+        function setLanguage(lang) {
+            if (!translations[lang]) lang = 'de'; 
+
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.getElementById('legalContent').innerHTML = translations[lang].html;
+
+            localStorage.setItem('preferredLang', lang);
+            document.getElementById('languageSelect').value = lang;
+        }
+
+        // 3. SAYFA İLİŞKİLENDİRME VE YÜKLEME
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentFile = window.location.pathname.split("/").pop();
+            document.querySelectorAll('.nav-item').forEach(link => {
+                if (link.getAttribute('href') === currentFile) link.classList.add('active');
+            });
+
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            setLanguage(savedLang);
+
+            document.getElementById('languageSelect').addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>

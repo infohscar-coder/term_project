@@ -1,0 +1,15 @@
+# Ignore large source files to save prompt tokens
+app.js
+
+# Ignore dependency and build directories
+node_modules/
+dist/
+build/
+
+# Ignore large data or mock files
+*.json
+*.csv
+*.log
+
+# Ignore environment/secret files
+.env
